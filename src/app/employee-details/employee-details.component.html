@@ -1,0 +1,35 @@
+<br>
+<div style="vertical-align: middle;font-size: larger ;font-weight: bold;" class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+        <div class="form-group">
+            <fieldset disabled="">
+                <label class="control-label" for="disabledInput">Employee ID</label>
+                <input style="min-width: 150px;" class="form-control" id="disabledInput" type="text" value={{01}}
+                    disabled="">
+                <br>
+                <label class="control-label" for="disabledInput">Employee Name</label>
+                <input style="min-width:250px;" class="form-control" id="disabledInput" type="text" value="Ashhad_khan"
+                    disabled="">
+                <br>
+                <label class="control-label" for="disabledInput">Employee Salary</label>
+                <input style="min-width:250px;" class="form-control" id="disabledInput" type="text"
+                    value={{12500|currency:USD}} disabled="">
+                <br>
+                <label class="control-label" for="disabledInput">Employee Age</label>
+                <input style="min-width:250px;" class="form-control" id="disabledInput" type="text" value={{35}}
+                    disabled="">
+            </fieldset>
+        </div>
+    </div>
+    <div (click)="clickevent()" class="col-md-4">
+        <h4 style="text-align: center;">Employee Photo</h4>
+        <img src="\assets\download.jpg"
+         class="img-circle" alt="Employee"
+         width="300" height="400"
+         style="align-self: center;">
+         <p>{{empldetail.data|json}}</p>
+          <h1>{{errmessage}}</h1>
+    </div>
+
+</div>

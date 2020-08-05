@@ -1,0 +1,40 @@
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        
+        <h1 style="font-family: calibri;font-weight: bold; text-align: center;">Employee List </h1>
+
+        <button *ngIf=isvisible type="button" class="btn btn-info btn-lg btn-block" (click)="getemployeeList()">Show Employee List</button>
+        <table *ngIf=!isvisible class="table">
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Employee Salary</th>
+                    <th>Age</th>
+
+                </tr>
+            </thead>
+        </table>
+        <table *ngIf=!isvisible  class="table table-bordered table-active">
+            <div *ngFor="let employee of employees">
+
+                <tbody class="table-striped">
+                    <tr (click)="getemployeeDetail(employee.id)" class="info">
+                        <td style="width: 200px;">{{employee.id}}</td>
+                        <td style="width: 230px;">{{employee.employee_name}}</td>
+                        <td style="width: 150px;">{{employee.employee_salary}}</td>
+                        <td style="width: 50px;">{{employee.employee_age}}</td>
+                    </tr>
+                </tbody>
+            </div>
+        </table>
+
+
+        <h1 *ngIf=!isvisible>{{errormessage}}</h1>
+        <button *ngIf=!isvisible type="button" class="btn btn-info btn-lg btn-block"
+         (click)="isvisible ='true'">Hide Employee List</button>
+    </div>
+    <div class="col-md-4"></div>
+</div>
