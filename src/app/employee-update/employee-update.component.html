@@ -1,0 +1,23 @@
+<br /><br />
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="card">
+            <h3 class="card-header  text-center">Employee Detail</h3>
+            <div class="card-body">
+                <form class="form" [formGroup]="empForm" (ngSubmit)="getEmployeeDetails()">
+                    <div class="form-group">
+                        <label><h5>Employee Id</h5></label>
+                        <input class="form-control" formControlName="empId" type="number" pattern="^[0-9]{6}$" />
+                        <span class="text-danger" *ngIf="empForm.get('empId').invalid && empForm.get('empId').dirty">
+                            Employee Id should be of 6 digits
+                        </span>
+                    </div>
+                    <button type="submit" [disabled]="empForm.invalid" class="btn btn-info">Get details</button>
+                    <div *ngIf="errorMessage!=null">{{errorMessage}}</div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>

@@ -9,18 +9,24 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { CookieService } from 'ngx-cookie-service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EmployeeUpdateComponent } from './employee-update/employee-update.component';
+import { EmployeeAddComponent } from './employee-add/employee-add.component';
 @NgModule({
   declarations: [
     AppComponent,
     EmplyoeeListComponent,
     EmployeeDetailsComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    EmployeeUpdateComponent,
+    EmployeeAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

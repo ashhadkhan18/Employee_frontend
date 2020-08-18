@@ -1,7 +1,7 @@
 
 <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
         
         <h1 style="font-family: calibri;font-weight: bold; text-align: center;">Employee List </h1>
 
@@ -9,10 +9,16 @@
         <table *ngIf=!isvisible class="table">
             <thead>
                 <tr>
-                    <th>Employee ID</th>
-                    <th>Employee Name</th>
-                    <th>Employee Salary</th>
-                    <th>Age</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Date of Birth</th>
+                    <th>Address</th>
+                    <th>Position</th>
+                    <th>Reports To</th>
+                    <th>Telephone</th>
+                    <th>Gender</th>
+                    <th>Salary</th>
 
                 </tr>
             </thead>
@@ -21,11 +27,17 @@
             <div *ngFor="let employee of employees">
 
                 <tbody class="table-striped">
-                    <tr (click)="getemployeeDetail(employee.id)" class="info">
-                        <td style="width: 200px;">{{employee.id}}</td>
-                        <td style="width: 230px;">{{employee.employee_name}}</td>
-                        <td style="width: 150px;">{{employee.employee_salary}}</td>
-                        <td style="width: 50px;">{{employee.employee_age}}</td>
+                    <tr (click)="getemployeeDetail(employee.empId)" class="info">
+                        <td style="width: 100px;">{{employee.empId}}</td>
+                        <td style="width: 230px;">{{employee.name}}</td>
+                        <td style="width: 350px;">{{employee.department}}</td>
+                        <td style="width: 300px;">{{employee.dob}}</td>
+                        <td style="width: 350px;">{{employee.address}}</td>
+                        <td style="width: 150px;">{{employee.position}}</td>
+                        <td style="width: 150px;">{{employee.reportsTo}}</td>
+                        <td style="width: 150px;">{{employee.telephone}}</td>
+                        <td style="width: 50px;">{{employee.gender}}</td>
+                        <td style="width: 150px;">{{employee.salary}}</td>
                     </tr>
                 </tbody>
             </div>
@@ -36,5 +48,5 @@
         <button *ngIf=!isvisible type="button" class="btn btn-info btn-lg btn-block"
          (click)="isvisible ='true'">Hide Employee List</button>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-1"></div>
 </div>

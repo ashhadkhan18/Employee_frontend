@@ -1,47 +1,40 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { employeesingleresponse } from '../sharedModels/employeesingleresponse';
 import { Observable, throwError } from 'rxjs';
-import { catchError,retry } from 'rxjs/internal/operators';
-import { employeeresponse } from '../sharedModels/employeeresponse';
-import { CookieService } from 'ngx-cookie-service';
+import { catchError } from 'rxjs/internal/operators';
+import { Employee } from '../sharedModels/Employee';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeDetailService {
 
-  constructor(private http:HttpClient, private cookieservice:CookieService) { }
+  constructor(private http:HttpClient) { }
 
-  url:string="http://dummy.restapiexample.com/api/v1/employee/1";
-  cookiesvalue :string;
-
-
-
-  public getemployeedetail(): Observable<employeesingleresponse>{
-    this.http.options("http://dummy.restapiexample.com/api/v1/employee/2");
-    console.log( this.http.options("http://dummy.restapiexample.com/api/v1/employee/2"));
-    this.cookiesvalue= this.cookieservice.get('PHPSESSID');
-    this.cookieservice.set('PHPSESSID',"f0b9ab292459dd1ab362faafe72d365c",2,"dummy.restapiexample.com");
-    // this.cookieservice.set('PHPSESSID',"f0b9ab292459dd1ab362faafe72d365c");
-    // this.cookieservice.set('Path',"/");
-    // this.cookieservice.set('Domain',"dummy.restapiexample.com");
-    
-   return this.http.get<employeesingleresponse>("http://dummy.restapiexample.com/api/v1/employee/2")
+  public getemployeedetail(empId): Observable<Employee>{
+   return this.http.get<Employee>("http://localhost:3333/Employee/EmployeeAPI/getEmployee/"+empId)
     .pipe(catchError(this.errorHandler));
   }
-//return this.http.get<employeeresponse>("http://dummy.restapiexample.com/api/v1/employees")
-//.pipe(catchError(this.errorHandler));
  
- private errorHandler(err:HttpErrorResponse){
+  public updateEmployee(empId,employee:Employee):Observable<string>{
+    employee.empId = empId;
+    return this.http.patch<string>("http://localhost:3333/Employee/EmployeeAPI/updateEmployee/"+empId,employee,{responseType: 'text' as 'json'})
+      .pipe(catchError(this.errorHandler));
+  }
+
+  public deleteEmployee(empId):Observable<string>{
+    return this.http.delete<string>("http://localhost:3333/Employee/EmployeeAPI/deleteEmployee/"+empId,{responseType: 'text' as 'json'})
+    .pipe(catchError(this.errorHandler));
+  }
+
+ public errorHandler(err:HttpErrorResponse){
     let errmessage:string='';
     if(err instanceof ErrorEvent){
       errmessage= `Error: ${err.error.message}`;
     }
     else{
-      errmessage= `Error: ${err.status}\nMessage:${err.message}`
+      errmessage= `Error: ${err.status}\nMessage:${err.message}`;
     }
-    window.alert(errmessage);
     return throwError(errmessage);
   }
 }
