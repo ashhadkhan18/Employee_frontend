@@ -3,14 +3,14 @@
 <div style="text-align:center;background-color: paleturquoise;" >
  
   <h1>
-    Welcome to {{ title }}!
+    {{ title }}
   </h1>
 </div>
  <div style="background-color: rgb(225, 161, 238); text-align: center;font-weight: bold;" >
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <table>
     <tr>
-  <td  style="padding-right: 10px;"><a class="navbar-brand" href="#" >Navbar</a></td>
+  <td  style="padding-right: 10px;"><a class="navbar-brand" href="#" >Employee</a></td>
   <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button> -->
@@ -20,16 +20,16 @@
       <td  > <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a></td>
     <!-- </li>
     <li class="nav-item"> -->
-      <td  class="col-md-3" > <a class="nav-link" href="/employee-list">View Employee Details</a></td>
+      <td  class="col-md-3" > <a class="nav-link" [routerLink]="['/employee-list']">View Employee Details</a></td>
     <!-- </li>
     <li class="nav-item">  -->
-      <td  class="col-md-3" > <a class="nav-link" href="#">Add Employee</a></td>
+      <td  class="col-md-3" > <a class="nav-link" [routerLink]="['/employee-add']">Add Employee</a></td>
     <!-- </li>
     <li class="nav-item"> -->
-      <td class="col-md-3" > <a class="nav-link" href="#">Update Employee</a></td>
+      <td class="col-md-3" > <a class="nav-link" [routerLink]="['/employee-update']">Update Employee</a></td>
     <!-- </li>
     <li> -->
-      <td  class="col-md-3" style="padding-right: 5px;"> <a class="nav-link" href="#">Delete Employee</a></td>
+      <td  class="col-md-3" style="padding-right: 5px;"> <a class="nav-link" [routerLink]="['/employee-delete']" >Delete Employee</a></td>
     <!-- </li>
   </ul> -->
 </div>

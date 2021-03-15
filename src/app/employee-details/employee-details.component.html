@@ -1,35 +1,57 @@
 <br>
 <div style="vertical-align: middle;font-size: larger ;font-weight: bold;" class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-5">
-        <div class="form-group">
-            <fieldset disabled="">
-                <label class="control-label" for="disabledInput">Employee ID</label>
-                <input style="min-width: 150px;" class="form-control" id="disabledInput" type="text" value={{01}}
-                    disabled="">
-                <br>
-                <label class="control-label" for="disabledInput">Employee Name</label>
-                <input style="min-width:250px;" class="form-control" id="disabledInput" type="text" value="Ashhad_khan"
-                    disabled="">
-                <br>
-                <label class="control-label" for="disabledInput">Employee Salary</label>
-                <input style="min-width:250px;" class="form-control" id="disabledInput" type="text"
-                    value={{12500|currency:USD}} disabled="">
-                <br>
-                <label class="control-label" for="disabledInput">Employee Age</label>
-                <input style="min-width:250px;" class="form-control" id="disabledInput" type="text" value={{35}}
-                    disabled="">
-            </fieldset>
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="card">
+            <h3 style="text-align: center;" class="card-header">Employee Details</h3>
+            <div class="card-body">
+                <div *ngIf="empldetail!=null">
+                    <form class="form" [formGroup]="employeeForm">
+                        <div class="form-group">
+                            <label>Employee Id</label>
+                            <input type="number" class="form-control" formControlName="empId" />
+                        </div>
+                        <div class="form-group">
+                            <label>Employee Name</label>
+                            <input type="text" class="form-control" formControlName="name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Department</label>
+                            <input type="text" class="form-control" formControlName="department" />
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" class="form-control" formControlName="address" />
+                        </div>
+                        <div class="form-group">
+                            <label>Reports To</label>
+                            <input type="text" class="form-control" formControlName="reportsTo" />
+                        </div>
+                        <div class="form-group">
+                            <label>Telephone</label>
+                            <input type="tel" class="form-control" formControlName="telephone" />
+                        </div>
+                        <div class="form-group">
+                            <label>Position</label>
+                            <input type="text" class="form-control" formControlName="position" />
+                        </div>
+                        <div class="form-group">
+                            <label>Salary</label>
+                            <input type="number" class="form-control" formControlName="salary" />
+                        </div>
+                        <div style="text-align: center;" class="card-footer">
+                            <button (click)="update(employeeForm)" class="btn btn-info"
+                                type="submit">Update</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button (click)="delete()" class="btn btn-danger">Delete</button>
+                        </div>
+                        <div style="text-align: center;" class="text-danger" *ngIf="errmessage!=null">{{errmessage}}
+                        </div>
+                        <div style="text-align: center;" class="text-success" *ngIf="successMessage!=null">
+                            {{successMessage}}</div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    <div (click)="clickevent()" class="col-md-4">
-        <h4 style="text-align: center;">Employee Photo</h4>
-        <img src="\assets\download.jpg"
-         class="img-circle" alt="Employee"
-         width="300" height="400"
-         style="align-self: center;">
-         <p>{{empldetail.data|json}}</p>
-          <h1>{{errmessage}}</h1>
-    </div>
-
+    <div class="col-md-3"></div>
 </div>

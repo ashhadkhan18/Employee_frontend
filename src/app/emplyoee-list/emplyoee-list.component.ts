@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeListService } from './employee-list.service';
-import { employeeinterface } from '../sharedModels/employeeInterface';
 import { Router } from '@angular/router';
+import { Employee } from '../sharedModels/Employee';
 
 @Component({
   selector: 'app-emplyoee-list',
@@ -16,18 +16,23 @@ export class EmplyoeeListComponent implements OnInit {
   }
 
   isvisible: boolean = true;
-  employees: employeeinterface[];
-  errormessage: string='';
+  employees: Employee[];
+  employee:Employee;
+  errormessage: string;
 
   getemployeeList(){
-
+    this.errormessage = null;
     this.isvisible= false;
     this.emplistservice.getemployeeData()
-    .subscribe(data=>this.employees=data.data,
+    .subscribe(data=>this.employees=data,
                 error=>this.errormessage=error);
                 console.log(this.errormessage);
   }
   getemployeeDetail(emplid){
+    this.emplistservice.getemployeedetail(emplid).subscribe(
+      data=>this.employee=data,
+      error=>this.errormessage=error);
+
     this.router.navigate(['/employee-detail',emplid]);
   }
 }

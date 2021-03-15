@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule, HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { employeeinterface } from '../sharedModels/employeeInterface';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/internal/operators/catchError';
-import { employeeresponse } from '../sharedModels/employeeresponse';
-import { employeesingleresponse } from '../sharedModels/employeesingleresponse';
+import { Employee } from '../sharedModels/Employee';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +11,9 @@ export class EmployeeListService {
 
   constructor(private http: HttpClient) { }
 
-  getemployeeData(): Observable<employeeresponse> {
+  getemployeeData(): Observable<Employee[]> {
 
-    return this.http.get<employeeresponse>("http://dummy.restapiexample.com/api/v1/employees")
+    return this.http.get<Employee[]>("http://localhost:3333/Employee/EmployeeAPI/getAllEmployees/")
       .pipe(catchError(this.errorHandler));
 
   }
@@ -29,9 +27,9 @@ export class EmployeeListService {
     }
     return throwError(errormessage);
   }
-  public getemployeedetail(): Observable<employeesingleresponse>{
+  public getemployeedetail(empId): Observable<Employee>{
 
-    return this.http.get<employeesingleresponse>("http://dummy.restapiexample.com/api/v1/employee/2")
+    return this.http.get<Employee>("http://localhost:3333/Employee/EmployeeAPI/getEmployee/"+empId)
      .pipe(catchError(this.errorHandler));
    }
 }

@@ -15,4 +15,16 @@ export class HomeComponent implements OnInit {
   navigate2emplist(){
     this.router.navigate(['/employee-list']);
   }
+
+  navigateToUpdateEmployee(){
+    this.router.navigate(['/employee-update']);
+  }
+
+  navigateToDeleteEmployee(){
+    this.router.navigate(['/employee-delete']);
+  }
+
+  navigateToAddEmployee(){
+    this.router.navigate(['/employee-add']);
+  }
 }
